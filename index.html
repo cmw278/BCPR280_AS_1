@@ -1,10 +1,115 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>BCPR280_AS_1 PSP Assignment | Chris Wordsworth</title>
+    
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <style>
+        body {
+            min-height: 100vh;
+        }
+        
+        main {
+            padding: 1rem;
+        }
+        
+        .card {
+            width: 18rem;
+            height: 19rem;
+            margin: 1rem;
+        }
+        
+        .jumbotron {
+            margin-bottom: 0;
+        }
+    </style>
+    
   </head>
   
-  <body>
+  <body class="container-fluid d-flex flex-column justify-content-between">
+    
+    <header class="jumbotron row align-items-center justify-content-center">
+      <h1>BCPR280_AS_1 PSP Assignment</h1>
+    </header>
+    
+    <main class="row align-items-center justify-content-around">
+      
+      <!-- App 1 -->
+      <div id="app-1" class="card text-center">
+        <div class="card-header">App 1</div>
+        <div class="card-body d-flex flex-column justify-content-around">
+          <p class="card-text">Your Guess:  n</p>
+          <h5 class="card-title">Try Higher</h5>
+          <!-- Input Group -->
+          <div class="input-group btn-block">
+            <input type="number" class="form-control" value="0"/>
+            <div class="input-group-append">
+              <button class="btn btn-info">Guess</button>
+            </div>
+          </div><!-- input-group -->
+          <button class="btn btn-danger btn-block">Reset</button>
+        </div><!-- card-body -->
+      </div><!-- card -->
+      
+      <!-- App 2 -->
+      <div id="app-2" class="card text-center">
+        <div class="card-header">App 2</div>
+        <div class="card-body d-flex flex-column justify-content-around">
+          <p class="card-text">Your Guess:  n</p>
+          <h5 class="card-title">Warm</h5>
+          <!-- Input Group -->
+          <div class="input-group btn-block">
+            <input type="number" class="form-control" value="0"/>
+            <div class="input-group-append">
+              <button class="btn btn-info">Guess</button>
+            </div>
+          </div><!-- input-group -->
+          <button class="btn btn-danger btn-block">Reset</button>
+        </div><!-- card-body -->
+      </div><!-- card -->
+      
+      <!-- App 3 -->
+      <div id="app-3" class="card text-center">
+        <div class="card-header">App 3</div>
+        <div class="card-body d-flex flex-column justify-content-around">
+          <h5 class="card-title">Is your number n?</h5>
+          <!-- Button Group -->
+          <div class="btn-group btn-block">
+            <button class="btn btn-info">Try Higher</button>
+            <button class="btn btn-info">Try Lower</button>
+          </div><!-- Button Group -->
+          <button class="btn btn-success btn-block">Correct</button>
+          <button class="btn btn-danger btn-block">Reset</button>
+        </div><!-- card-body -->
+      </div><!-- card -->
+      
+      <!-- App 4 -->
+      <div id="app-4" class="card text-center">
+        <div class="card-header">App 4</div>
+        <div class="card-body d-flex flex-column justify-content-around">
+          <h5 class="card-title">Is your number n?</h5>
+          <!-- Button Group -->
+          <div class="btn-group btn-block">
+            <button class="btn btn-info">Cold</button>
+            <button class="btn btn-info">Cool</button>
+            <button class="btn btn-info">Warm</button>
+            <button class="btn btn-info">Hot</button>
+          </div><!-- Button Group -->
+          <button class="btn btn-success btn-block">Correct</button>
+          <button class="btn btn-danger btn-block">Reset</button>
+        </div><!-- card-body -->
+      </div><!-- card -->
+      
+    </main>
+    
+    <footer class="jumbotron row align-items-center justify-content-center">
+      <span>&copy;2019 Chris Wordsworth</span>
+    </footer>
+    
   </body>
 </html>
