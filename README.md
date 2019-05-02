@@ -20,7 +20,7 @@
     - [ ] Write evaluateInput function
     - [ ] Write disableInput function
     - [ ] Assemble app-1 component
-  - [ ] Design and build App-1
+  - [ ] Design and build App-2
     - [ ] Determine tasks at a later date
 
 ## Iteration 4
