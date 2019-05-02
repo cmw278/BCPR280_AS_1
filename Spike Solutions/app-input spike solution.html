@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Spike Solution: app-input</title>
+    
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <!-- Custom Vue Components -->
+    <script src="..\src\component-app-input.js"></script>
+    
+  </head>
+  
+  <body>
+    <h2>Spike Solution: app-input</h2>
+    <main class="row align-items-center justify-content-around">
+      
+      <!-- Spike Solution -->
+      <div id="vue-root">
+        <!-- Display results here -->
+        <h5>User input: {{ submitted }}</h5>
+        
+        <!-- User Input -->
+        <app-input v-model="userInput" @submit="update">Submit</app-control>
+      </div>
+    </main>
+    <script>
+      // Code to mount Vue instance goes here
+      var vm = new Vue({
+        el: '#vue-root',
+        data: {
+          userInput: 0,
+          submitted: 'none'
+        },
+        methods: {
+          update: function () {
+            this.submitted = this.userInput
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

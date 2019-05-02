@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Spike Solution: app-text</title>
+    
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <!-- Custom Vue Components -->
+    <script src="..\src\component-app-text.js"></script>
+    
+  </head>
+  
+  <body>
+    <h2>Spike Solution: app-text</h2>
+    <main class="row align-items-center justify-content-around">
+      
+      <!-- Spike Solution -->
+      <div id="vue-root">
+        <!-- should generate <div></div> with
+             <p></p> and <h5></h5> as children -->
+        <app-text>
+          <template #user-input>Your Guess: n</template>
+          <template #app-response>Warm</template>
+        </app-text>
+      </div>
+    </main>
+    <script>
+      // Code to mount Vue instance goes here
+      var vm = new Vue({ el: '#vue-root' })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Spike Solution: app-button</title>
+    
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <!-- Custom Vue Components -->
+    <script src="..\src\component-app-button.js"></script>
+    
+  </head>
+  
+  <body>
+    <h2>Spike Solution: app-button</h2>
+    <main class="row align-items-center justify-content-around">
+      
+      <!-- Spike Solution -->
+      <div id="vue-root">
+        
+        <!-- Display results here -->
+        <h5>Button Pressed: {{ buttonPressed }}</h5>
+        
+        <!-- Green Button -->
+        <app-button class="btn-success" @submit="submit('Green')" :disabled="greenBtnPressed">Green</app-button>
+        
+        <!-- Red Button -->
+        <app-button class="btn-danger" @submit="submit('Red')">Red</app-button>
+      </div>
+    </main>
+    <script>
+      // Code to mount Vue instance goes here
+      var vm = new Vue({
+        el: '#vue-root',
+        data: {
+          buttonPressed: 'None',
+          greenBtnPressed: false
+        },
+        methods: {
+          submit: function (colour) {
+            this.greenBtnPressed = colour === 'Green'
+            this.buttonPressed = colour + ' button'
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
