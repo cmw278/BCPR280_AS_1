@@ -13,7 +13,6 @@ var appInput = {
             class: 'form-control',
             attrs: {
               type: self.type,
-              id: 'fetch',
               min: 0,
               max: 99
             },
@@ -22,8 +21,13 @@ var appInput = {
               disabled: self.disabled
             },
             on: {
-              input: function (event) { //  forward input event upstream
-                self.$emit('input', parseInt(event.target.value))
+              input: function (event) {
+                self.$emit('input', //  forward input event upstream
+                  (parseInt(event.target.value) || 0) // fixes NaN issues
+                )
+              },
+              keyup: function (event) {
+                if (event.key === 'Enter') self.$emit('submit')
               }
             }
           }
@@ -50,7 +54,6 @@ var appInput = {
   },
   props: {
     value: {
-      type: Number,
       required: true
     },
     disabled: {
@@ -65,3 +68,11 @@ var appInput = {
 }
 
 Vue.component('app-input', appInput)
+
+class ComponentInput {
+  constructor (createElement, newInput) {
+    return createElement('app-input', newInput.options, 
+      label
+    )
+  }
+}

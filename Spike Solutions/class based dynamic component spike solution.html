@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Spike Solution: app-template</title>
+    
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <!-- Custom Vue Components -->
+    <script src="../src/component-app-card.js"></script>
+    <script src="../src/component-app-button.js"></script>
+    <script src="../src/component-app-input.js"></script>
+    
+  </head>
+  
+  <body>
+    <h2>Spike Solution: app-template</h2>
+    <main class="row align-items-center justify-content-around">
+      
+      <!-- Spike Solution -->
+      <div id="spikeApp">
+        <sample-1></sample-1>
+      </div>
+      
+    </main>
+    <script>
+      // Code to mount Vue instance goes here
+      
+      class MyComponent {
+        constructor () {
+          this.message = "Hello World"
+          this.var1 = 0
+        }
+        changeMessage () {
+          console.log('this is:', this)
+          this.message = "Goodbye world!"
+          console.log('Goodbye', this.message)
+        }
+        get build () {
+          return {
+            render: this.render,
+            data: this.data,
+            methods: this.methods
+          }
+        }
+        get render () {
+          return  function (createElement) {
+            var self = this
+            // console.log(this)
+            return createElement(
+              'app-card',
+              {
+                props: {
+                  title: 'Sample 1'
+                }
+              },
+              [createElement(
+                'app-button',
+                {
+                  class: 'btn btn-block btn-info',
+                  on: {
+                    submit: function () {
+                      self.changeMessage()
+                    }
+                  }
+                },
+                self.message
+              ), createElement(
+                'app-input',
+                {
+                  props: {
+                    'value': self.var1
+                  },
+                  on: {
+                    input: (e) => self.var1 = e
+                  }
+                },
+                'enter'
+              )]
+            )
+          }
+        }
+        get data () {
+          var { message, var1 } = this
+          return function () {
+            return { message, var1 }
+          }
+        }
+        get methods () {
+          var { changeMessage } = this
+          return {
+            changeMessage
+          }
+        }
+      }
+      
+      class MyNewComponent extends MyComponent {
+        constructor () {
+          super()
+          this.message = 'Hello New World'
+        }
+      }
+      
+      Vue.component('sample-1', new MyNewComponent().build)
+      
+      var app1 = new Vue({el: '#spikeApp'})
+      // console.log(app1)
+      
+    </script>
+  </body>
+</html>

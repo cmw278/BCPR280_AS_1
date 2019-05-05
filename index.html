@@ -30,7 +30,12 @@
     </style>
     
     <!-- Custom Vue Components -->
-    <script src="src\component-app-control.js"></script>
+    <script src="src\component-app-card.js"></script>
+    <script src="src\component-app-text.js"></script>
+    <script src="src\component-app-input.js"></script>
+    <script src="src\component-app-button.js"></script>
+    <script src="src\component-app-template.js"></script>
+    <script src="src\component-app-one.js"></script>
     
   </head>
   
@@ -43,21 +48,9 @@
     <main class="row align-items-center justify-content-around">
       
       <!-- App 1 -->
-      <div id="app-1" class="card text-center">
-        <div class="card-header">App 1</div>
-        <div class="card-body d-flex flex-column justify-content-around">
-          <p class="card-text">Your Guess:  n</p>
-          <h5 class="card-title">Try Higher</h5>
-          <!-- Input Group -->
-          <div class="input-group btn-block">
-            <input type="number" class="form-control" value="0"/>
-            <div class="input-group-append">
-              <button class="btn btn-info">Guess</button>
-            </div>
-          </div><!-- input-group -->
-          <button class="btn btn-danger btn-block">Reset</button>
-        </div><!-- card-body -->
-      </div><!-- card -->
+      <div id="app-1">
+        <app-1></app-1>
+      </div>
       
       <!-- App 2 -->
       <div id="app-2" class="card text-center">
@@ -67,12 +60,12 @@
           <h5 class="card-title">Warm</h5>
           <!-- Input Group -->
           <div class="input-group btn-block">
-            <input type="number" class="form-control" value="0"/>
+            <input type="number" class="form-control" value="0" disabled/>
             <div class="input-group-append">
-              <button class="btn btn-info">Guess</button>
+              <button class="btn btn-info" disabled>Guess</button>
             </div>
           </div><!-- input-group -->
-          <button class="btn btn-danger btn-block">Reset</button>
+          <button class="btn btn-danger btn-block" disabled>Reset</button>
         </div><!-- card-body -->
       </div><!-- card -->
       
@@ -83,11 +76,11 @@
           <h5 class="card-title">Is your number n?</h5>
           <!-- Button Group -->
           <div class="btn-group btn-block">
-            <button class="btn btn-info">Try Higher</button>
-            <button class="btn btn-info">Try Lower</button>
+            <button class="btn btn-info" disabled>Try Higher</button>
+            <button class="btn btn-info" disabled>Try Lower</button>
           </div><!-- Button Group -->
-          <button class="btn btn-success btn-block">Correct</button>
-          <button class="btn btn-danger btn-block">Reset</button>
+          <button class="btn btn-success btn-block" disabled>Correct</button>
+          <button class="btn btn-danger btn-block" disabled>Reset</button>
         </div><!-- card-body -->
       </div><!-- card -->
       
@@ -98,13 +91,13 @@
           <h5 class="card-title">Is your number n?</h5>
           <!-- Button Group -->
           <div class="btn-group btn-block">
-            <button class="btn btn-info">Cold</button>
-            <button class="btn btn-info">Cool</button>
-            <button class="btn btn-info">Warm</button>
-            <button class="btn btn-info">Hot</button>
+            <button class="btn btn-info" disabled>Cold</button>
+            <button class="btn btn-info" disabled>Cool</button>
+            <button class="btn btn-info" disabled>Warm</button>
+            <button class="btn btn-info" disabled>Hot</button>
           </div><!-- Button Group -->
-          <button class="btn btn-success btn-block">Correct</button>
-          <button class="btn btn-danger btn-block">Reset</button>
+          <button class="btn btn-success btn-block" disabled>Correct</button>
+          <button class="btn btn-danger btn-block" disabled>Reset</button>
         </div><!-- card-body -->
       </div><!-- card -->
       
@@ -116,6 +109,7 @@
     
     <script>
       // Code to mount Vue instance goes here
+      var app1 = new Vue({ el: '#app-1' })
     </script>
     
   </body>

@@ -4,7 +4,7 @@ var appText = {
     var self = this
     var userInput = self.$slots['user-input']
     var appResponse = self.$slots['app-response']
-    let children = [ createElement( // <h5 class="card-title">
+    var children = [ createElement( // <h5 class="card-title">
       'h5',
       { class: 'card-title' },
       appResponse
