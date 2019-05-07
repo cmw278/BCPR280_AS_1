@@ -1,10 +1,6 @@
-/* global Vue */
-class AppTemplate {
+class AppTemplate { // eslint-disable-line no-unused-vars
   constructor (title = 'Default App Template') {
-    this.gameOver = false
-    this.currentGuess = null
-    this.randomNumber = this.generateRandomNumber()
-    this.nTries = 0
+    this.reset()
     this.title = title
     this.slots = []
     this.inputs = []
@@ -12,25 +8,21 @@ class AppTemplate {
     this._init()
   }
   _init () {
-    this.newSlot('user-input', 'parrot' )
+    this.newSlot('user-input', 'parrot')
     this.newSlot('app-response', 'appResponse')
   }
-  parrot () { // compute function for repeating user input
-    if (this.currentGuess === null) return 'I\'m thinking of a number...'
-    return 'Your guess: ' + this.currentGuess
-  }
   appResponse () {
-    if (this.currentGuess === null) return 'It\'s between 1 and 99'
-    if (this.currentGuess === this.randomNumber)
-      return 'You got it in ' + this.nTries + (this.nTries > 1 ? ' tries!' : 'try!')
+    if (this.currentGuess === null) return 'It\'s between 0 and 99'
+    if (this.currentGuess === this.randomNumber) {
+      return 'You got it in ' + this.nTries + (this.nTries > 1 ? ' tries!' : ' try!')
+    }
   }
   reset () {
     this.gameOver = false
     this.currentGuess = null
-    this.randomNumber = this.generateRandomNumber()
     this.nTries = 0
   }
-  generateRandomNumber (min = 1, max = 99) {
+  generateRandomNumber (min = 0, max = 99) {
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
   endGame () {
@@ -55,43 +47,46 @@ class AppTemplate {
         )
       }
       // card-input nodes
-      for (let { label,
-                  options: { model, disabled, submit }
-                } of inputs) {
+      for (let {
+        label,
+        options: { model, disabled, submit }
+      } of inputs) {
         childNodes.push(
           createElement(
             'app-input',
             {
               props: {
-                'value': this[model],
-                'disabled': this[disabled]
+                value: this[model],
+                disabled: this[disabled]
               },
               on: {
                 submit: () => this[submit](),
-                input: (newVal) => this[model] = newVal
+                input: (newVal) => { this[model] = newVal }
               }
             },
-            label 
+            label
           )
         )
       }
       // card-button nodes
-      for (let { label, options: {
-        newClass, disabled, submit
-      } } of buttons) {
+      for (let {
+        labels,
+        options: { newClass, disabled, submit }
+      } of buttons) {
+        labels = labels instanceof Array ? labels : [labels]
         childNodes.push(
           createElement(
             'app-button',
             {
-              class: newClass,
               props: {
-                disabled: this[disabled]
+                customClass: newClass,
+                disabled: this[disabled],
+                labels: labels
               },
               on: {
-                submit: () => this[submit]()
+                submit: (btn) => this[submit](btn)
               }
-            },
-            label
+            }
           )
         )
       }
@@ -105,23 +100,21 @@ class AppTemplate {
     var data = Object.create(null)
     data.gameOver = this.gameOver
     data.currentGuess = this.currentGuess
-    data.randomNumber = this.randomNumber
     data.nTries = this.nTries
     return function () {
       return data
     }
   }
   get methods () {
-    return {
-      reset: this.reset,
-      generateRandomNumber: this.generateRandomNumber,
-      endGame: this.endGame
-    }
+    var methods = Object.create(null)
+    methods.reset = this.reset
+    methods.generateRandomNumber = this.generateRandomNumber
+    methods.endGame = this.endGame
+    return methods
   }
   get computed () {
     return {
-      appResponse: this.appResponse,
-      parrot: this.parrot
+      appResponse: this.appResponse
     }
   }
   newSlot (slot, key) {
@@ -131,8 +124,8 @@ class AppTemplate {
     var options = { model, disabled, submit }
     this.inputs.push({ label, options })
   }
-  newButton (label, newClass, submit, disabled = false) {
+  newButton (labels, newClass, submit, disabled = false) {
     var options = { newClass, submit, disabled }
-    this.buttons.push({ label, options })
+    this.buttons.push({ labels, options })
   }
 }

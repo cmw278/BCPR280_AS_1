@@ -36,6 +36,8 @@
     <script src="src\component-app-button.js"></script>
     <script src="src\component-app-template.js"></script>
     <script src="src\component-app-one.js"></script>
+    <script src="src\component-app-two.js"></script>
+    <script src="src\component-app-three.js"></script>
     
   </head>
   
@@ -45,44 +47,10 @@
       <h1>BCPR280_AS_1 PSP Assignment</h1>
     </header>
     
-    <main class="row align-items-center justify-content-around">
-      
-      <!-- App 1 -->
-      <div id="app-1">
-        <app-1></app-1>
-      </div>
-      
-      <!-- App 2 -->
-      <div id="app-2" class="card text-center">
-        <div class="card-header">App 2</div>
-        <div class="card-body d-flex flex-column justify-content-around">
-          <p class="card-text">Your Guess:  n</p>
-          <h5 class="card-title">Warm</h5>
-          <!-- Input Group -->
-          <div class="input-group btn-block">
-            <input type="number" class="form-control" value="0" disabled/>
-            <div class="input-group-append">
-              <button class="btn btn-info" disabled>Guess</button>
-            </div>
-          </div><!-- input-group -->
-          <button class="btn btn-danger btn-block" disabled>Reset</button>
-        </div><!-- card-body -->
-      </div><!-- card -->
-      
-      <!-- App 3 -->
-      <div id="app-3" class="card text-center">
-        <div class="card-header">App 3</div>
-        <div class="card-body d-flex flex-column justify-content-around">
-          <h5 class="card-title">Is your number n?</h5>
-          <!-- Button Group -->
-          <div class="btn-group btn-block">
-            <button class="btn btn-info" disabled>Try Higher</button>
-            <button class="btn btn-info" disabled>Try Lower</button>
-          </div><!-- Button Group -->
-          <button class="btn btn-success btn-block" disabled>Correct</button>
-          <button class="btn btn-danger btn-block" disabled>Reset</button>
-        </div><!-- card-body -->
-      </div><!-- card -->
+    <div id="vm-apps" class="row align-items-center justify-content-around">
+      <app-1></app-1>
+      <app-2></app-2>
+      <app-3></app-3>
       
       <!-- App 4 -->
       <div id="app-4" class="card text-center">
@@ -100,8 +68,7 @@
           <button class="btn btn-danger btn-block" disabled>Reset</button>
         </div><!-- card-body -->
       </div><!-- card -->
-      
-    </main>
+    </div>
     
     <footer class="jumbotron row align-items-center justify-content-center">
       <span>&copy;2019 Chris Wordsworth</span>
@@ -109,7 +76,7 @@
     
     <script>
       // Code to mount Vue instance goes here
-      var app1 = new Vue({ el: '#app-1' })
+      var vm = new Vue({ el: '#vm-apps' })
     </script>
     
   </body>

@@ -1,12 +1,16 @@
+/* global AppTemplate Vue */
 class AppOne extends AppTemplate {
   constructor (title = 'App 1') {
     super(title)
-    this.currentInputValue = 0
   }
   _init () {
     super._init()
     this.newInputField('Guess', 'currentInputValue', 'checkGuess', 'gameOver')
     this.newButton('Reset', 'btn-danger', 'reset')
+  }
+  parrot () { // compute function for repeating user input
+    if (this.currentGuess === null) return 'I\'m thinking of a number...'
+    return 'Your guess: ' + this.currentGuess
   }
   appResponse () { // compute function for creating the app response
     var superResponse = super.appResponse()
@@ -15,7 +19,7 @@ class AppOne extends AppTemplate {
     else if (this.currentGuess > this.randomNumber) return 'Try Lower'
   }
   checkGuess () {
-    if (!!this.gameOver) return // Fail-safe end-game
+    if (this.gameOver === true) return // Fail-safe end-game
     this.nTries++
     this.currentGuess = this.currentInputValue
     if (this.currentGuess === this.randomNumber) return this.endGame()
@@ -23,21 +27,25 @@ class AppOne extends AppTemplate {
   reset () {
     super.reset()
     this.currentInputValue = 0
+    this.randomNumber = this.generateRandomNumber()
   }
   get data () {
     var data = super.data()
     data.currentInputValue = this.currentInputValue
+    data.randomNumber = this.randomNumber
     return function () {
       return data
     }
   }
   get methods () {
-    return {
-      reset: this.reset,
-      checkGuess: this.checkGuess,
-      generateRandomNumber: this.generateRandomNumber,
-      endGame: this.endGame
-    }
+    var methods = super.methods
+    methods.checkGuess = this.checkGuess
+    return methods
+  }
+  get computed () {
+    var computed = super.computed
+    computed.parrot = this.parrot
+    return computed
   }
 }
 

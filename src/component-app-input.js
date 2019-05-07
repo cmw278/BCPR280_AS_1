@@ -5,7 +5,23 @@ var appInput = {
     var label = self.$slots.default
     return createElement(
       'div',
-      { class: 'input-group btn-block' },
+      {
+        class: 'input-group btn-block',
+        on: {
+          wheel: function (event) {
+            if (self.type === 'number' && !self.disabled) {
+              event.preventDefault()
+              if (event.isTrusted) {
+                var newValue = self.value
+                newValue = event.deltaY < 0 ? newValue + 1 : newValue - 1
+                newValue = newValue >= 0 ? newValue : 0
+                newValue = newValue <= 99 ? newValue : 99
+                self.$emit('input', newValue)
+              }
+            }
+          }
+        }
+      },
       [
         createElement( // <input type="number" class="form-control"/>
           'input',

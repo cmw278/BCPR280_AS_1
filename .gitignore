@@ -1,6 +1,5 @@
 # Documentation and existing libraries to be ignored #
 ######################################################
-lib/
 Documentation/
 
 # The following ignores provided by octocat #

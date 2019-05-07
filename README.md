@@ -5,18 +5,21 @@
 
 LOC | File
 ----|------
-164 | index.html
+84  | index.html
 24  | src\component-app-card.js
 28  | src\component-app-text.js
-79  | src\component-app-input.js
-23  | src\component-app-button.js
-139 | src\component-app-template.js
+95  | src\component-app-input.js
+52  | src\component-app-button.js
+132 | src\component-app-template.js
 53  | src\component-app-one.js
+27  | src\component-app-two.js
+76  | src\component-app-three.js
 33  | Spike Solutions\app-card spike solution.html
 37  | Spike Solutions\app-text spike solution.html
 47  | Spike Solutions\app-input spike solution.html
-52  | Spike Solutions\app-button spike solution.html
-115  | Spike Solutions\class based dynamic component spike solution.html
+53  | Spike Solutions\app-button spike solution.html
+115 | Spike Solutions\class based dynamic component spike solution.html
+856 | Total
 
 ## Iteration 1
   - [x] Create user interface
@@ -43,14 +46,20 @@ LOC | File
     - [x] Register app-1 component
 
 ## Iteration 4
-  - [ ] Design and build AppTwo
-    - [ ] app functions
-  - [ ] Design and build AppThree
-    - [ ] app data
-    - [ ] app functions
+  - [x] Design and build AppTwo
+    - [x] app functions
+    - [x] Register app-2 component
+  - [x] Design and build input-toolbar component
+    - [x] creates a button for each label passed
+    - [x] returns the label of the button pressed in submit event
+  - [x] Design and build AppThree
+    - [x] app data
+    - [x] app functions
+    - [x] Register app-3 component
+
+## Iteration 5
   - [ ] Design and build AppFour
     - [ ] app data
     - [ ] app functions
-
-## Iteration 5
+    - [ ] Register app-4 component
   - [ ] Automated Testing

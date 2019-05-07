@@ -24,11 +24,11 @@
         <!-- Display results here -->
         <h5>Button Pressed: {{ buttonPressed }}</h5>
         
-        <!-- Green Button -->
-        <app-button class="btn-success" @submit="submit('Green')" :disabled="greenBtnPressed">Green</app-button>
+        <!-- Twin Buttons -->
+        <app-button class="btn-success" @submit="submit" :labels="buttons" :disabled="disableTwins"></app-button>
         
         <!-- Red Button -->
-        <app-button class="btn-danger" @submit="submit('Red')">Red</app-button>
+        <app-button custom-class="btn-danger" @submit="submit" :labels="['Red Button']"></app-button>
       </div>
     </main>
     <script>
@@ -37,12 +37,13 @@
         el: '#vue-root',
         data: {
           buttonPressed: 'None',
-          greenBtnPressed: false
+          disableTwins: false,
+          buttons: ['Button 1', 'Button 2']
         },
         methods: {
-          submit: function (colour) {
-            this.greenBtnPressed = colour === 'Green'
-            this.buttonPressed = colour + ' button'
+          submit: function (btn) {
+            this.buttonPressed = btn
+            this.disableTwins = this.buttons.includes(btn)
           }
         }
       })
